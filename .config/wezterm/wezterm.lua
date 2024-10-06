@@ -9,6 +9,7 @@ config = {
 	default_cursor_style = "BlinkingBar",
 	color_scheme = "Tokyo Night",
 	window_decorations = "RESIZE",
+	window_background_opacity = 0.9
 }
 
 return config
