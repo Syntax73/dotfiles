@@ -49,6 +49,9 @@ autoload -Uz +X compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' menu select
 
+# ASDF config
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
 # Zoxide config
 eval "$(zoxide init zsh)"
 
