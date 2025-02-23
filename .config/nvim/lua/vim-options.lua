@@ -9,5 +9,4 @@ vim.wo.number = true
 vim.o.relativenumber = true
 
 vim.o.termguicolors = true
-vim.opt.signcolumn = “yes”
-
+vim.opt.signcolumn = "yes"
