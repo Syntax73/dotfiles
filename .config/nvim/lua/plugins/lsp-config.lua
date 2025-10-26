@@ -9,7 +9,8 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "zls", "ts_ls", "volar" },
+        ensure_installed = { "lua_ls", "zls", "ts_ls", "vue_ls", "tailwindcss", "prismals" },
+        automatic_enable = true,
       })
     end,
   },
@@ -30,29 +31,35 @@ return {
     },
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      local lspconfig = require("lspconfig")
 
-      lspconfig.lua_ls.setup({
+      vim.lsp.config("lua_ls", {
         capabilities = capabilities,
       })
 
-      lspconfig.zls.setup({
+      vim.lsp.config("zls", {
+        capabilities = capabilities,
+      })
+
+      vim.lsp.config("prismals", {
         capabilities = capabilities,
       })
 
       -- https://kosu.me/blog/vue-nvim-lsp-config how to config vue lsp
-      local mason_registry = require("mason-registry")
-      local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
+      -- https://kosu.me/blog/breaking-changes-in-mason-2-0-how-i-updated-my-neovim-lsp-config
+      local vue_language_server_path = vim.fn.expand("$MASON/packages")
+          .. "/vue-language-server"
           .. "/node_modules/@vue/language-server"
 
-      lspconfig.ts_ls.setup({
+      local util = require("lspconfig.util")
+
+      vim.lsp.config("ts_ls", {
         capabilities = capabilities,
         init_options = {
           plugins = {
             {
               name = "@vue/typescript-plugin",
               location = vue_language_server_path,
-              languages = { "vue" },
+              languages = { "javascript", "typescript", "vue" },
             },
           },
         },
@@ -65,14 +72,26 @@ return {
         },
       })
 
-      lspconfig.volar.setup({
+      vim.lsp.config("vue_ls", {
         capabilities = capabilities,
       })
 
-      vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
-      vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
-      vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
-      vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
+      vim.lsp.enable("vue_ls")
+
+      vim.diagnostic.config({
+        virtual_text = true,
+        underline = {
+          severity = { min = vim.diagnostic.severity.WARN },
+        },
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = " ",
+            [vim.diagnostic.severity.WARN] = " ",
+            [vim.diagnostic.severity.INFO] = " ",
+            [vim.diagnostic.severity.HINT] = "󰌵",
+          },
+        },
+      })
 
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
