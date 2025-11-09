@@ -51,6 +51,7 @@ zstyle ':completion:*' menu select
 
 # ASDF config
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+source "${ASDF_DATA_DIR:-$HOME/.asdf}/plugins/dotnet/set-dotnet-env.zsh"
 
 # Zoxide config
 eval "$(zoxide init zsh)"
