@@ -45,6 +45,8 @@ return {
 								keymap.set("n", "<leader>crn", buffer.rename, {})
 								keymap.set("n", "<leader>cr", buffer.references, {})
 								keymap.set("n", "<leader>ci", buffer.implementation, {})
+								keymap.set("n", "<leader>c]", buffer.implementation, {})
+								keymap.set("n", "<leader>c[", buffer.implementation, {})
 
 								keymap.set("n", "<leader>ca", buffer.code_action, {})
 							end
