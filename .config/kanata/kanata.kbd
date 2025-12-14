@@ -1,0 +1,78 @@
+(defcfg process-unmapped-keys yes)
+
+(deflocalkeys-linux
+  ´ 26
+  [ 27
+  ç 39
+  ~ 40
+  ' 41
+  ] 43
+  ; 53
+  \ 86
+  / 89
+)
+
+;; not tested yet
+(deflocalkeys-winiov2
+  ´ 26
+  [ 27
+  ç 39
+  ~ 40
+  ' 41
+  ] 43
+  ; 53
+  \ 86
+  / 89
+)
+
+(defsrc ;; brazillian-abnt2
+  esc  f1    f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  '    1     2    3    4    5    6    7    8    9    0    -    =   bspc
+  tab  q     w    e    r    t    y    u    i    o    p    ´    [   ret
+  caps a     s    d    f    g    h    j    k    l    ç    ~    ]
+  lsft \     z    x    c    v    b    n    m    ,    .    ;    rsft
+  lctl lmet  lalt           spc            ralt      /
+)
+
+(defvar
+  tap-time 150
+  hold-time 200
+)
+
+;; base layer
+(defalias
+  escctrl (multi f24 (tap-hold $tap-time $hold-time esc lctl))
+  a (multi f24 (tap-hold $tap-time $hold-time a lmet))
+  s (multi f24 (tap-hold $tap-time $hold-time s ralt))
+  d (multi f24 (tap-hold $tap-time $hold-time d lsft))
+  f (multi f24 (tap-hold $tap-time $hold-time f lctl))
+  j (multi f24 (tap-hold $tap-time $hold-time j rctl))
+  k (multi f24 (tap-hold $tap-time $hold-time k rsft))
+  l (multi f24 (tap-hold $tap-time $hold-time l lalt))
+  ç (multi f24 (tap-hold $tap-time $hold-time ç rmet))
+  nav (multi f24 (tap-hold $tap-time $hold-time spc (layer-while-held navigation)))
+)
+
+(deflayer base
+  _        _    _    _    _    _    _    _    _    _    _    _    _
+  _        _    _    _    _    _    _    _    _    _    _    _    _   _
+  _        _    _    _    _    _    _    _    _    _    _    _    _   _
+  @escctrl @a   @s   @d   @f   _    _    @j   @k   @l   @ç   _    _
+  -        _    _    _    _    _    _    _    _    _    _    _    _
+  _        _    _              @nav           _         _
+)
+
+;; navigation layer
+(defalias
+  lh (multi f24 (tap-hold $tap-time $hold-time ◀ ⤒))
+  re (multi f24 (tap-hold $tap-time $hold-time ▶ ⤓))
+)
+
+(deflayer navigation
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _   _
+  _    _    _    _    _    _    _    ⇟    ⇞   _    _    _    _   _
+  _    _    _    _    _    _    @lh  ▼    ▲    @re  _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _         _
+)
