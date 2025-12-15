@@ -1,4 +1,7 @@
-(defcfg process-unmapped-keys yes)
+(defcfg 
+  process-unmapped-keys yes
+  windows-altgr add-lctl-release
+)
 
 (deflocalkeys-linux
   ´ 26
@@ -12,17 +15,16 @@
   / 89
 )
 
-;; not tested yet
 (deflocalkeys-winiov2
-  ´ 26
-  [ 27
-  ç 39
-  ~ 40
-  ' 41
-  ] 43
-  ; 53
-  \ 86
-  / 89
+  ´ 219
+  [ 221
+  ç 186
+  ~ 222
+  ' 192
+  ] 220
+  ; 191
+  \ 226
+  / 193
 )
 
 (defsrc ;; brazillian-abnt2
@@ -30,8 +32,8 @@
   '    1     2    3    4    5    6    7    8    9    0    -    =   bspc
   tab  q     w    e    r    t    y    u    i    o    p    ´    [   ret
   caps a     s    d    f    g    h    j    k    l    ç    ~    ]
-  lsft \     z    x    c    v    b    n    m    ,    .    ;    rsft
-  lctl lmet  lalt           spc            ralt      /
+  lsft \     z    x    c    v    b    n    m    ,    .    ;    /   rsft
+  lctl lmet  lalt           spc            ralt           rctl
 )
 
 (defvar
@@ -58,8 +60,8 @@
   _        _    _    _    _    _    _    _    _    _    _    _    _   _
   _        _    _    _    _    _    _    _    _    _    _    _    _   _
   @escctrl @a   @s   @d   @f   _    _    @j   @k   @l   @ç   _    _
-  -        _    _    _    _    _    _    _    _    _    _    _    _
-  _        _    _              @nav           _         _
+  _        _    _    _    _    _    _    _    _    _    _    _    _   _
+  _        _    _              @nav           _              _
 )
 
 ;; navigation layer
@@ -71,8 +73,8 @@
 (deflayer navigation
   _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _   _
-  _    _    _    _    _    _    _    ⇟    ⇞   _    _    _    _   _
+  _    _    _    _    _    _    _    ⇟    ⇞     _    _    _    _   _
   _    _    _    _    _    _    @lh  ▼    ▲    @re  _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _              _              _         _
+  _    _    _    _    _    _    _    _    _    _    _    _    _   _
+  _    _    _              _              _              _
 )
