@@ -45,12 +45,13 @@
 (defvar
   tap-time 150
   hold-time 200
+  chord-time 30
 )
 
 ;; chords/combos
 (defchordsv2
-  (, .) del 200 all-released (navigation)
-  (m ,) (macro esc S-; w ret) 200 all-released (navigation)
+  (i o) del $chord-time all-released (navigation)
+  (m ,) (macro esc S-; w ret) $chord-time all-released (navigation)
 )
 
 ;; base layer
@@ -85,9 +86,9 @@
 (deflayer navigation
   _    _     _    _    _    _    _    _    _    _    _    _    _
   _    _     _    _    _    _    _    _    _    _    _    _    _   _
-  _    _     _    _    _    _    _    pgdn pgup _    del  _    _   _
+  _    _     mute volu vold _    _    pgdn pgup _    del  _    _   _
   _    lmet  lalt lsft lctl _    @lh  ▼    ▲    @re  bks  _    _
-  _    _     _    _    _    _    _    _    _    _    _    ret  _   _
+  _    _     _    pp   prev next _    _    _    _    _    ret  _   _
   _    _     _              _              _              _
 )
 
