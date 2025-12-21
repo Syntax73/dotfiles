@@ -2,6 +2,11 @@
   process-unmapped-keys yes
   windows-altgr add-lctl-release
   concurrent-tap-hold yes
+
+  linux-dev-names-exclude (
+    "8BitDo 8BitDo Ultimate 2 Wireless Controller for PC Keyboard"
+    "fifine Microphone"
+  )
 )
 
 (deflocalkeys-linux
