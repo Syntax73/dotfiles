@@ -56,7 +56,8 @@
 
 ;; base layer
 (defalias
-  escctrl (multi f24 (tap-hold $tap-time $hold-time esc lctl))
+  hyper (multi lsft lctl lmet lalt)
+  escctrl (multi f24 (tap-hold $tap-time $hold-time esc @hyper))
   a (multi f24 (tap-hold $tap-time $hold-time a lmet))
   s (multi f24 (tap-hold $tap-time $hold-time s ralt))
   d (multi f24 (tap-hold $tap-time $hold-time d lsft))
