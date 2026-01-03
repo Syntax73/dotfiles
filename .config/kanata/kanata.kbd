@@ -56,8 +56,7 @@
 
 ;; base layer
 (defalias
-  hyper (multi lsft lctl lmet lalt)
-  escctrl (multi f24 (tap-hold $tap-time $hold-time esc @hyper))
+  eschk (multi f24 (tap-hold $tap-time $hold-time esc (layer-while-held numbers)))
   a (multi f24 (tap-hold $tap-time $hold-time a lmet))
   s (multi f24 (tap-hold $tap-time $hold-time s ralt))
   d (multi f24 (tap-hold $tap-time $hold-time d lsft))
@@ -70,26 +69,41 @@
 )
 
 (deflayer base
-  _        _    _    _    _    _    _    _    _    _    _    _    _
-  _        _    _    _    _    _    _    _    _    _    _    _    _   _
-  _        _    _    _    _    _    _    _    _    _    _    _    _   _
-  @escctrl @a   @s   @d   @f   _    _    @j   @k   @l   @ç   _    _
-  _        _    _    _    _    _    _    _    _    _    _    _    _   _
-  _        _    _              @nav           _              _
+  _      _    _    _    _    _    _    _    _    _    _    _    _
+  _      _    _    _    _    _    _    _    _    _    _    _    _   _
+  _      _    _    _    _    _    _    _    _    _    _    _    _   _
+  @eschk @a   @s   @d   @f   _    _    @j   @k   @l   @ç   _    _
+  _      _    _    _    _    _    _    _    _    _    _    _    _   _
+  _      _    _              @nav           _              _
 )
 
 ;; navigation layer
 (defalias
   lh (multi f24 (tap-hold $tap-time $hold-time ◀ ⤒))
   re (multi f24 (tap-hold $tap-time $hold-time ▶ ⤓))
+
+  ;; KDE virtual desktop
+  vd1 C-f1
+  vd2 C-f2
+  vd3 C-f3
+  vd4 C-f4
 )
 
 (deflayer navigation
   _    _     _    _    _    _    _    _    _    _    _    _    _
-  _    _     _    _    _    _    _    _    _    _    _    _    _   _
+  _    @vd1  @vd2 @vd3 @vd4 _    _    _    _    _    _    _    _   _
   _    _     mute volu vold _    _    pgdn pgup _    del  _    _   _
   _    lmet  lalt lsft lctl _    @lh  ▼    ▲    @re  bks  _    _
   _    _     _    pp   prev next _    _    _    _    _    ret  _   _
+  _    _     _              _              _              _
+)
+
+(deflayer numbers
+  _    _     _    _    _    _    _    _    _    _    _    _    _
+  _    _     _    _    _    _    _    _    _    _    _    _    _   _
+  _    _     _    _    _    _    kp/  7    8    9    kp*  _    _   _
+  _    _     _    _    _    _    kp+  4    5    6    kp-  _    _
+  _    _     _    _    _    _    _    0    1    2    3    ret  _   _
   _    _     _              _              _              _
 )
 
