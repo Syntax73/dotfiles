@@ -10,6 +10,7 @@ config = {
 	font = wezterm.font("Maple Mono NF"),
 	default_cursor_style = "BlinkingBar",
 	color_scheme = "Tokyo Night",
+	enable_kitty_keyboard = true,
 	window_decorations = "RESIZE",
 	window_background_opacity = 0.9,
 	window_padding = {
