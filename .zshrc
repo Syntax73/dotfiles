@@ -83,6 +83,7 @@ zstyle ':completion:*' menu select
 
 # Aliases
 alias ls='eza --icons --hyperlink'
+alias cd='z'
 
 # git
 alias ga='git add'

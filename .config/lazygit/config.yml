@@ -27,4 +27,4 @@ gui:
       - "#c0caf5"
 git:
   pagers:
-    - pager: diff-so-fancy
+    - pager: delta --dark --paging=never
