@@ -25,6 +25,7 @@ return {
 				on_attach = function()
 					vim.keymap.set("n", "<leader>gs", ":Git<CR>", {})
 					vim.keymap.set("n", "<leader>gp", ":Git push<CR>", {})
+					vim.keymap.set("n", "<leader>gP", ":Git pull<CR>", {})
 					vim.keymap.set("n", "<leader>gb", ":Gitsigns blame<CR>", {})
 					vim.keymap.set("n", "<leader>gh", ":Gitsigns preview_hunk<CR>", {})
 					vim.keymap.set("n", "]h", ":Gitsigns next_hunk<CR>", {})
