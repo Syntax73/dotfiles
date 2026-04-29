@@ -1,10 +1,10 @@
 return {
-  "nvim-treesitter/nvim-treesitter",
-  branch = 'master',
-  lazy = false,
-  build = ":TSUpdate",
+  "romus204/tree-sitter-manager.nvim",
+  branch = 'main',
+  -- lazy = false,
+  -- build = ":TSUpdate",
   config = function()
-    local configs = require("nvim-treesitter.configs")
+    local configs = require("tree-sitter-manager")
 
     configs.setup({
       ensure_installed = {
@@ -19,12 +19,8 @@ return {
         "prisma",
         "dart",
       },
-      sync_install = false,
       auto_install = false,
-      ignore_install = { "all" },
-      modules = {},
-      highlight = { enable = true },
-      indent = { enable = true },
+      highlight = true,
     })
   end,
 }
