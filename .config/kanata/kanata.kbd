@@ -2,6 +2,7 @@
   process-unmapped-keys yes
   windows-altgr add-lctl-release
   concurrent-tap-hold yes
+  danger-enable-cmd yes
 
   linux-dev-names-exclude (
     "8BitDo 8BitDo Ultimate 2 Wireless Controller for PC Keyboard"
@@ -46,6 +47,13 @@
   tap-time 150
   hold-time 200
   chord-time 30
+  hold-cl 500
+)
+
+;; notifications
+(defalias
+  ngl (cmd notify-send -u normal "Kanata" "Switched to Gaming")
+  nbl (cmd notify-send -u normal "Kanata" "Switched to Base")
 )
 
 ;; chords/combos
@@ -56,20 +64,22 @@
 
 ;; base layer
 (defalias
-  eschk (multi f24 (tap-hold $tap-time $hold-time esc (layer-while-held numbers)))
-  a (multi f24 (tap-hold $tap-time $hold-time a lmet))
-  s (multi f24 (tap-hold $tap-time $hold-time s ralt))
-  d (multi f24 (tap-hold $tap-time $hold-time d lsft))
-  f (multi f24 (tap-hold $tap-time $hold-time f lctl))
-  j (multi f24 (tap-hold $tap-time $hold-time j rctl))
-  k (multi f24 (tap-hold $tap-time $hold-time k rsft))
-  l (multi f24 (tap-hold $tap-time $hold-time l lalt))
-  ç (multi f24 (tap-hold $tap-time $hold-time ç rmet))
-  nav (multi f24 (tap-hold $tap-time $hold-time spc (layer-while-held navigation)))
+  eschk (tap-hold $tap-time $hold-time esc (layer-while-held numbers))
+  a (tap-hold $tap-time $hold-time a lmet)
+  s (tap-hold $tap-time $hold-time s ralt)
+  d (tap-hold $tap-time $hold-time d lsft)
+  f (tap-hold $tap-time $hold-time f lctl)
+  j (tap-hold $tap-time $hold-time j rctl)
+  k (tap-hold $tap-time $hold-time k rsft)
+  l (tap-hold $tap-time $hold-time l lalt)
+  ç (tap-hold $tap-time $hold-time ç rmet)
+  nav (tap-hold $tap-time $hold-time spc (layer-while-held navigation))
+  gl (tap-hold $tap-time $hold-cl f12 (multi (layer-switch game) @ngl))
+  bl (tap-hold $tap-time $hold-cl f12 (multi (layer-switch base) @nbl))
 )
 
 (deflayer base
-  _      _    _    _    _    _    _    _    _    _    _    _    _
+  _      _    _    _    _    _    _    _    _    _    _    _    @gl
   _      _    _    _    _    _    _    _    _    _    _    _    _   _
   _      _    _    _    _    _    _    _    _    _    _    _    _   _
   @eschk @a   @s   @d   @f   _    _    @j   @k   @l   @ç   _    _
@@ -79,8 +89,8 @@
 
 ;; navigation layer
 (defalias
-  lh (multi f24 (tap-hold $tap-time $hold-time ◀ ⤒))
-  re (multi f24 (tap-hold $tap-time $hold-time ▶ ⤓))
+  lh (tap-hold $tap-time $hold-time ◀ ⤒)
+  re (tap-hold $tap-time $hold-time ▶ ⤓)
 
   ;; KDE virtual desktop
   vd1 C-f1
@@ -107,3 +117,11 @@
   _    _     _              _              _              _
 )
 
+(deflayer game
+  esc  f1    f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  @bl
+  '    1     2    3    4    5    6    7    8    9    0    -    =   bspc
+  tab  q     w    e    r    t    y    u    i    o    p    ´    [   ret
+  caps a     s    d    f    g    h    j    k    l    ç    ~    ]
+  lsft \     z    x    c    v    b    n    m    ,    .    ;    /   rsft
+  lctl lmet  lalt           spc            ralt           rctl
+)
