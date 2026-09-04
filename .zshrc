@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Env vars
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+# export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 export HISTSIZE=5000
 export HISTFILE=~/.zsh_history
 export HISTDUP=erase
@@ -110,6 +110,9 @@ alias gw='git switch'
 # Tools
 # Zoxide config
 eval "$(zoxide init zsh)"
+
+# Mise config
+eval "$(mise activate zsh)"
 
 # External config
 [[ -f "$HOME/.local/bin/env" ]] && source "$HOME/.local/bin/env"
