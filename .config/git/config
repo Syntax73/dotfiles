@@ -1,16 +1,16 @@
 [core]
-	editor = nvim
+  editor = nvim
   pager = delta
 [user]
-	name = Syntax73
-	email = 45923733+Syntax73@users.noreply.github.com
+  name = Syntax73
+  email = 45923733+Syntax73@users.noreply.github.com
   signingKey = "/home/sandro/.ssh/github-commit-sign.pub"
 [gpg]
-	format = ssh
+  format = ssh
 [commit]
-	gpgsign = true
+  gpgsign = true
 [tag]
-	gpgsign = true
+  gpgsign = true
 [interactive]
   diffFilter = delta --color-only
 [delta]
