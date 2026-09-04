@@ -59,6 +59,7 @@
 ;; chords/combos
 (defchordsv2
   (i o) del $chord-time all-released (navigation)
+  (k l) bspc $chord-time all-released (navigation)
   (m ,) (macro esc S-; w ret) $chord-time all-released (navigation)
 )
 
